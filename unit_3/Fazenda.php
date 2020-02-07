@@ -21,4 +21,5 @@ echo "
     É selvagem? {$cachorro->selvagem} \n
     Som: {$cachorro->fazerBarulho()} \n
     {$cachorro->andar()} \n
+    {$cachorro->brigar()} \n
 ";

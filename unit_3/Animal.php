@@ -4,9 +4,13 @@ abstract class Animal
 {
     public $nome;
     public $selvagem;
+    static $qtd;
 
     public function __construct() {
-        echo "Animal Iniciado... \n";
+        self::$qtd++;
+        $qtd = self::$qtd;
+
+        echo "{$qtd} Animal Iniciado... \n";
     }
 
     public function comer()
@@ -20,5 +24,11 @@ abstract class Animal
     }
 
     abstract function andar();
+
+    public static function brigar()
+    {
+        $qtd = self::$qtd;
+        return "Animal {$qtd} está brigando neste momento.";
+    }
 }
 
