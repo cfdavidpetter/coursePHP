@@ -1,17 +1,17 @@
 version: '3'
 
 services: 
-    app:
+    projectapp:
         build: ./.docker/service
         volumes:
-            - ./:/var/www
+            - ./unit_4/:/var/www
 
-    app-nginx:
+    projectapp-nginx:
         build: ./.docker/nginx
         restart: always
         ports: 
             - "8002:80"
         volumes:
-            - "./:/var/www"
+            - "./unit_4/:/var/www"
         depends_on: 
-            - app
+            - projectapp
