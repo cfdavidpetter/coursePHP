@@ -2,14 +2,28 @@
 
 namespace OrdersFood;
 
-use OrdersFood\Http\{HttpRequest, HttpResponse};
+use Symfony\Component\HttpFoundation\{Request, Response};
 
 class Application
 {
     public static function run()
     {
-        $request = new HttpRequest();
-        $request = new HttpResponse();
-        echo "OK"; 
+        $request    = Request::createFromGlobals();
+        $response   = new Response();
+
+        $query = $request->getPathInfo();
+        var_dump($query);
+
+        switch ($query) {
+            case '/teste':
+                $response->setContent('Dois');
+            break;
+            
+            default:
+                $response->setContent('Um');
+                break;
+        }
+
+        $response->send();
     }
 }

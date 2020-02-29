@@ -4,7 +4,15 @@ namespace OrdersFood\Http;
 
 class HttpResponse
 {
-    function __construct() {
-        echo 'HttpResponse';
+    private $content = '';
+
+    public function setContent($content)
+    {
+        # code...
+    }
+
+    public function getContent()
+    {
+        return $this->content;
     }
 }
