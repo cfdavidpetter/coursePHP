@@ -2,18 +2,16 @@
 
 namespace OrdersFood\Router;
 
-use Symfony\Component\HttpFoundation\Response;
-
 class RouterManager
 {
     private $request;
     private $response;
     private $path;
 
-    function __construct($request)
+    function __construct($request, $response)
     {
         $this->request  = $request;
-        $this->response = new Response();
+        $this->response = $response;
         $this->path     = $this->request->getPathInfo();
         $this->run();
     }
@@ -30,9 +28,10 @@ class RouterManager
                 $controller = new $controller;
 
                 if (sizeof($piecesList) == 1) {
-                    $controller->index($this->request);
+                    $controller->index($this->request, $this->response);
                 } else {
-                    $controller->$piecesList[1]($this->request); 
+                    $methodStr = $piecesList[1];
+                    $controller->$methodStr($this->request, $this->response); 
                 }
 
                 return;

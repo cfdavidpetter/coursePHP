@@ -2,18 +2,23 @@
 
 namespace OrdersFood;
 
-use Symfony\Component\HttpFoundation\Request;
+use OrdersFood\DependencyInjection\Dependencies;
 use OrdersFood\Router\RouterManager;
 
 class Application
 {
+    private static $injector;
     private static $request;
     private static $response;
-    private static $routerManager;
+    private static $manager;
 
     public static function run()
     {
-        self::$request          = Request::createFromGlobals();
-        self::$routerManager    = new RouterManager(self::$request);
+        self::$injector = Dependencies::run();
+
+        self::$request  = self::$injector->get('Symfony\Component\HttpFoundation\Request');
+        self::$response = self::$injector->get('Symfony\Component\HttpFoundation\Response');
+
+        self::$manager = new RouterManager(self::$request::createFromGlobals(), self::$response);
     }
 }

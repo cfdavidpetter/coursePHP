@@ -2,12 +2,17 @@
 
 namespace OrdersFood\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
-
 class HomeController
 {
-    public function index($request)
+    public function index($request, $response)
     {
-        echo 'HomeController';
+        $response->setContent('HomeController');
+        $response->send();
+    }
+
+    public function about($request, $response)
+    {
+        $response->setContent('HomeController::about');
+        $response->send();
     }
 }

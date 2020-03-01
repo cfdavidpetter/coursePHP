@@ -2,7 +2,7 @@
 
 $routes = [
     ['GET',     '/',        'HomeController'],
-    ['GET',     '/about',   'HomeController']
+    ['GET',     '/about',   'HomeController::about']
 ];
 
 return $routes;
