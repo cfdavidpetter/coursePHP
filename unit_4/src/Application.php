@@ -2,28 +2,18 @@
 
 namespace OrdersFood;
 
-use Symfony\Component\HttpFoundation\{Request, Response};
+use Symfony\Component\HttpFoundation\Request;
+use OrdersFood\Router\RouterManager;
 
 class Application
 {
+    private static $request;
+    private static $response;
+    private static $routerManager;
+
     public static function run()
     {
-        $request    = Request::createFromGlobals();
-        $response   = new Response();
-
-        $query = $request->getPathInfo();
-        var_dump($query);
-
-        switch ($query) {
-            case '/teste':
-                $response->setContent('Dois');
-            break;
-            
-            default:
-                $response->setContent('Um');
-                break;
-        }
-
-        $response->send();
+        self::$request          = Request::createFromGlobals();
+        self::$routerManager    = new RouterManager(self::$request);
     }
 }
