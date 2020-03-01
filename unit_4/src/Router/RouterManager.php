@@ -41,5 +41,4 @@ class RouterManager
         $this->response->setContent('Error 404 Not Found.');
         $this->response->send();
     }
-    
 }
