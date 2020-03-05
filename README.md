@@ -1,4 +1,4 @@
-# coursePHP 
+# 👨‍🎓 coursePHP 
 
 📃 Unit 1 - Studying on attributes and functions: public, protected and private.
 
